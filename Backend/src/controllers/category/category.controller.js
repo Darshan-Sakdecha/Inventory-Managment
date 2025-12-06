@@ -1,7 +1,6 @@
 import { Category } from "../../models/category.models.js";
 
-// Admin & manager Create category 
-
+// Admin & manager by Create category 
 export const createCategory = async (req, res) => {
     try {
         const { name, description } = req.body
@@ -37,6 +36,7 @@ export const createCategory = async (req, res) => {
     }
 }
 
+// admin , manager , staff by get
 export const getAllCategory = async (req, res) => {
     try {
         const categories = await Category.find({})
@@ -54,6 +54,7 @@ export const getAllCategory = async (req, res) => {
     }
 }
 
+// admin , manager , staff by get
 export const getById = async (req, res) => {
     try {
         const { id } = req.params;
@@ -83,6 +84,7 @@ export const getById = async (req, res) => {
     }
 }
 
+// Admin & manager by update
 export const updateCategory = async (req, res) => {
     try {
         const { id } = req.params;
@@ -124,6 +126,7 @@ export const updateCategory = async (req, res) => {
     }
 }
 
+// Admin only by delete
 export const deleteCategory = async (req, res) => {
     try {
         const { id } = req.params;
