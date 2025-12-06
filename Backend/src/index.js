@@ -18,6 +18,13 @@ app.use(express.static("public"));
 // set cookies on browser / server : 
 app.use(cookieParser());
 
+//Routes:
+import router from './routes/auth.routes.js';
+app.use("/api/v1/auth", router);
+// category : 
+import categoryRouter from './routes/category/category.routes.js';
+app.use("/api/v1/category", categoryRouter);
+
 const port = process.env.PORT || 4000;
 app.get('/', (req, res) => {
     res.send("Hello wolrd");
