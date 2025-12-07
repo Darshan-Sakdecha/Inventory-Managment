@@ -16,6 +16,22 @@ const supplierSchema = new mongoose.Schema({
     },
     company: {
         type: String
+    },
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    },
+    createdByRole: {
+        type: String,
+        required: true
+    },
+    updatedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
+    updatedByRole: {
+        type: String
     }
 }, { timestamps: true });
 

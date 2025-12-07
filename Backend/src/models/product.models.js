@@ -17,20 +17,38 @@ const productSchema = new mongoose.Schema({
     },
     sku: { //Unique code for product
         type: String,
-        unique: true
+        unique: true,
+        required: true
     },
     price: {
-        type: String,
+        type: Number,
         required: true
     },
     quantity: {
         type: Number,
-        required: true
+        required: true,
+        min: 0
     },
     description: {
         type: String
     },
     image: { // Cloudinary image url
+        type: String
+    },
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    },
+    createdByRole: {
+        type: String,
+        required: true
+    },
+    updatedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
+    updatedByRole: {
         type: String
     }
 

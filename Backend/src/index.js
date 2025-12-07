@@ -24,6 +24,9 @@ app.use("/api/v1/auth", router);
 // category : 
 import categoryRouter from './routes/category/category.routes.js';
 app.use("/api/v1/category", categoryRouter);
+//Supplier :
+import supplierRouter from './routes/supplier/supplier.routes.js';
+app.use("/api/v1/supplier",supplierRouter);
 
 const port = process.env.PORT || 4000;
 app.get('/', (req, res) => {
