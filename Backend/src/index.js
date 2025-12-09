@@ -5,7 +5,9 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
 const app = express();
-dotenv.config();
+dotenv.config({
+    path:'./env'
+});
 
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
@@ -26,7 +28,10 @@ import categoryRouter from './routes/category/category.routes.js';
 app.use("/api/v1/category", categoryRouter);
 //Supplier :
 import supplierRouter from './routes/supplier/supplier.routes.js';
-app.use("/api/v1/supplier",supplierRouter);
+app.use("/api/v1/supplier", supplierRouter);
+//Product : 
+import productRouter from './routes/product/product.routes.js';
+app.use("/api/v1/product", productRouter);
 
 const port = process.env.PORT || 4000;
 app.get('/', (req, res) => {
