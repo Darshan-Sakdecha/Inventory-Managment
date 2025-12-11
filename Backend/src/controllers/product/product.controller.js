@@ -4,12 +4,12 @@ import fs from 'fs';
 
 export const createProduct = async (req, res) => {
     try {
-        const { name, categoryId, supplierId, sku, price, quantity, description } = req.body;
+        const { name, categoryId, supplierId, sku, price, description } = req.body;
 
         const createdBy = req.user.id;
         const createdByRole = req.user.role;
 
-        if (!name || !categoryId || !supplierId || !sku || !price || !quantity) {
+        if (!name || !categoryId || !supplierId || !sku || !price) {
             return res.status(400).json({ message: "All required fields must be provided." })
         }
 
@@ -40,7 +40,6 @@ export const createProduct = async (req, res) => {
             supplierId,
             sku,
             price,
-            quantity,
             description,
             image: imageUrl,
             createdBy,
@@ -119,7 +118,7 @@ export const getById = async (req, res) => {
 export const updateProduct = async (req, res) => {
     try {
         const { id } = req.params;
-        const { name, categoryId, supplierId, sku, price, quantity, description } = req.body;
+        const { name, categoryId, supplierId, sku, price, description } = req.body;
 
         if (!id) {
             return res.status(400).json({
@@ -140,7 +139,6 @@ export const updateProduct = async (req, res) => {
         if (supplierId) product.supplierId = supplierId;
         if (sku) product.sku = sku;
         if (price) product.price = price;
-        if (quantity !== undefined) product.quantity = quantity;
         if (description) product.description = description;
 
         // Update role info
@@ -167,7 +165,7 @@ export const updateProduct = async (req, res) => {
         const updatedProduct = await Product.findById(id)
             .populate("categoryId", "name")
             .populate("supplierId", "name")
-            .select("-createdBy -createByRole -updatedBy -updatedByRole");
+            .select("-createdBy -createdByRole -updatedBy -updatedByRole");
 
         res.status(200).json({
             message: "Product updated successfully",

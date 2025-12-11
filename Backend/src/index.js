@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser'
 
 const app = express();
 dotenv.config({
-    path:'./env'
+    path: './env'
 });
 
 app.use(cors({
@@ -32,6 +32,10 @@ app.use("/api/v1/supplier", supplierRouter);
 //Product : 
 import productRouter from './routes/product/product.routes.js';
 app.use("/api/v1/product", productRouter);
+//Purchase :
+import purchaseRouter from './routes/purchase/purchase.routes.js';
+app.use("/api/v1/purchase", purchaseRouter);
+
 
 const port = process.env.PORT || 4000;
 app.get('/', (req, res) => {

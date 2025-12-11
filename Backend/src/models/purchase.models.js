@@ -30,6 +30,17 @@ const purchaseSchema = new mongoose.Schema({
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
+    },
+    createdByRole: {
+        type: String,
+        required: true
+    },
+    updatedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
+    updatedByRole: {
+        type: String
     }
 }, { timestamps: true });
 
