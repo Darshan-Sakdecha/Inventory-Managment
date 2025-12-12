@@ -35,6 +35,12 @@ app.use("/api/v1/product", productRouter);
 //Purchase :
 import purchaseRouter from './routes/purchase/purchase.routes.js';
 app.use("/api/v1/purchase", purchaseRouter);
+//Sale :
+import saleRouter from './routes/sale/sale.routes.js'
+app.use("/api/v1/sale", saleRouter);
+//Stock :
+import stockRouter from './routes/stock/stock.routes.js';
+app.use("/api/v1/stock",stockRouter);
 
 
 const port = process.env.PORT || 4000;
